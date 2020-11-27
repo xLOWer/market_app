@@ -1,0 +1,34 @@
+2020-11-19 11:09:24.2250 DEBUG GetDefaultConnection()
+2020-11-19 11:09:30.5287 DEBUG В базе отсутствует пользователь с такой парой логин/пароль
+2020-11-19 11:43:28.0374 DEBUG GetDefaultConnection()
+2020-11-19 11:45:23.8296 DEBUG GetDefaultConnection()
+2020-11-19 13:29:56.2358 DEBUG GetDefaultConnection()
+2020-11-19 13:30:00.8608 DEBUG В базе отсутствует пользователь с такой парой логин/пароль
+2020-11-19 13:43:30.1889 DEBUG GetDefaultConnection()
+2020-11-19 15:42:13.5952 DEBUG GetDefaultConnection()
+2020-11-19 15:42:18.5170 DEBUG В базе отсутствует пользователь с такой парой логин/пароль
+2020-11-19 15:44:52.0795 DEBUG GetDefaultConnection()
+2020-11-19 15:44:56.5170 DEBUG В базе отсутствует пользователь с такой парой логин/пароль
+2020-11-19 15:50:47.5170 DEBUG GetDefaultConnection()
+2020-11-19 15:53:00.1108 DEBUG GetDefaultConnection()
+2020-11-19 15:55:20.0394 ERROR System.Data.ConstraintException: The 'IdParent' property on 'BudgetItem' could not be set to a 'null' value. You must set this property to a non-null value of type 'System.Decimal'. 
+   в System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   в lambda_method(Closure , Shaper )
+   в System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   в System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   в System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   в System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   в System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   в MarketApp.UI.ViewModels.DetailViewModel..ctor() в D:\Repos\market_app\MarketApp.UI\ViewModels\DetailViewModel.cs:строка 55
+   в MarketApp.UI.ViewModels.DetailViewModel..ctor(DocAmend doc, Detail detail) в D:\Repos\market_app\MarketApp.UI\ViewModels\DetailViewModel.cs:строка 42
+   в MarketApp.UI.ViewModels.DocAmendViewModel.EditDetailAction(Object o) в D:\Repos\market_app\MarketApp.UI\ViewModels\DocAmendViewModel.cs:строка 173
+2020-11-19 15:56:21.6577 DEBUG GetDefaultConnection()
+2020-11-19 16:06:09.5327 DEBUG GetDefaultConnection()
+2020-11-19 16:22:35.5170 DEBUG GetDefaultConnection()
+2020-11-19 16:26:11.5327 DEBUG GetDefaultConnection()
+2020-11-19 16:29:58.0639 DEBUG GetDefaultConnection()
+2020-11-19 16:30:55.7358 DEBUG GetDefaultConnection()
+2020-11-19 16:32:52.0170 DEBUG GetDefaultConnection()
+2020-11-19 16:36:11.9389 DEBUG GetDefaultConnection()
+2020-11-19 16:38:05.7358 DEBUG GetDefaultConnection()
+2020-11-19 16:48:36.0952 DEBUG GetDefaultConnection()

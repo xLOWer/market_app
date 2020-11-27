@@ -1,0 +1,128 @@
+﻿<dxr:DXRibbonWindow x:Class="MarketApp.UI.Views.DetailWindow"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+                    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+                    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+                    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d" 
+                    Height="380" 
+                    Width="380"
+                    Title="CreateDocAmendDetailWindow" 
+                    ResizeMode="NoResize">
+    <dx:DXWindow.Resources>
+        <ResourceDictionary Source="../Styles.xaml"/>
+    </dx:DXWindow.Resources>
+    <Grid x:Name="mainMatchesGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <dxr:RibbonControl Grid.Row="0" 
+                           Style="{StaticResource ribbonControlStyle}">
+            <dxr:RibbonDefaultPageCategory>
+                <dxr:RibbonPage Caption="Управление">
+                    <dxr:RibbonPageGroup Caption="">
+
+                        <dxb:BarButtonItem Content="Сохранить и выйти" Name="SaveButton"
+                                           Description="Создаёт статью и сохраняет её для дальнейших действий"
+                                           RibbonStyle="Large"
+                                           Command="{Binding SaveCommand}" 
+                                           Glyph="{dx:DXImage SvgImages/Outlook Inspired/SaveAndClose.svg}"/>
+
+                        <!--<dxb:BarButtonItem Content="fill"
+                                           RibbonStyle="Large"
+                                           Command="{Binding FillCommand}" 
+                                           Glyph="{dx:DXImage SvgImages/RichEdit/SelectTableRow.svg}"/>-->
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+            </dxr:RibbonDefaultPageCategory>
+        </dxr:RibbonControl>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Margin="10 2 10 2" >
+
+            <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                <Label Content="№ с/ф" 
+                       Style="{StaticResource label100Style}"/>
+                <dxe:TextEdit Style="{StaticResource field250Style}" 
+                              EditValue="{Binding Item.InvoiceNumber, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                <Label Content="Дата с/ф" 
+                       Style="{StaticResource label100Style}"/>
+                <dxe:DateEdit Style="{StaticResource field250NullableDateStyle}"
+                              EditValue="{Binding Item.DocDate,UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                <Label Content="Месяц начисл." Style="{StaticResource label100Style}"/>
+                <dxe:DateEdit Style="{StaticResource field250MonthStyle}" 
+                                      IsEnabled="{Binding CanEditDocAmend, UpdateSourceTrigger=PropertyChanged}"
+                                      EditValue="{Binding Item.AccrualDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <dxe:DateEdit.StyleSettings>
+                        <dxe:DateEditPickerStyleSettings />
+                    </dxe:DateEdit.StyleSettings>
+                </dxe:DateEdit>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                <Label Content="Статья" Style="{StaticResource label100Style}" />
+                <dxg:LookUpEdit Style="{StaticResource lookUp250Style}"
+                                x:Name="BudgetItemList_LookUpEdit"      
+                                DataContext="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                                ItemsSource="{Binding BudgetItemList}"
+                                EditValue="{Binding Item.IdBudget, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <dxg:LookUpEdit.PopupContentTemplate>
+                        <ControlTemplate TargetType="{x:Type ContentControl}">
+                            <dxg:GridControl x:Name="PART_GridControl" Style="{StaticResource lookUpGridControlStyle}">
+                                <dxg:GridControl.Columns>
+                                    <dxg:GridColumn Header="Наименование" FieldName="Name" Width="*"/>
+                                </dxg:GridControl.Columns>
+                                <dxg:GridControl.View>
+                                    <dxg:TreeListView AutoWidth="True"
+                                                      KeyFieldName="Id" 
+                                                      ParentFieldName="IdParent" 
+                                                      TreeDerivationMode="Selfreference"
+                                                      AutoExpandAllNodes="True"/>
+                                </dxg:GridControl.View>
+                            </dxg:GridControl>
+                        </ControlTemplate>
+                    </dxg:LookUpEdit.PopupContentTemplate>
+                    <dxg:LookUpEdit.StyleSettings>
+                        <dxg:SearchLookUpEditStyleSettings/>
+                    </dxg:LookUpEdit.StyleSettings>
+                </dxg:LookUpEdit>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                <Label Content="Счёт/ДС" 
+                       Style="{StaticResource label100Style}" />
+                <dxe:TextEdit Style="{StaticResource field250CurrencyStyle}" 
+                              EditValue="{Binding Item.AccountNumber,UpdateSourceTrigger=PropertyChanged}" NullText="{x:Null}" />
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                <Label Content="Плановая сумма" 
+                       Style="{StaticResource label100Style}" />
+                <dxe:TextEdit Style="{StaticResource field250CurrencyStyle}" 
+                              EditValue="{Binding Item.PlanSum,UpdateSourceTrigger=PropertyChanged}" NullText="{x:Null}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 2 0 2">
+                <Label Content="Коментарий" 
+                       Style="{StaticResource label100Style}" />
+                <dxe:TextEdit Style="{StaticResource field250Style}" 
+                              EditValue="{Binding Item.Coment,UpdateSourceTrigger=PropertyChanged}" NullText="{x:Null}"/>
+            </StackPanel>
+
+
+        </StackPanel>
+    </Grid>
+
+
+</dxr:DXRibbonWindow>

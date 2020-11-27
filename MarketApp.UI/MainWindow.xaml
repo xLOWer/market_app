@@ -1,0 +1,301 @@
+﻿<dxr:DXRibbonWindow x:Class="MarketApp.UI.MainWindow"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+                    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+                    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+                    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d"
+        Title="Коменсации" Height="450" Width="800" WindowState="Maximized" 
+                    Loaded="DXRibbonWindow_Loaded"
+                    Closing="DXRibbonWindow_Closing">
+    <dx:DXWindow.Resources>
+        <ResourceDictionary Source="Styles.xaml"/>
+    </dx:DXWindow.Resources>
+    <Grid Margin="0 0 0 -2" x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="26"/>
+        </Grid.RowDefinitions>
+
+        <dxr:RibbonControl Grid.Row="0" Style="{StaticResource ribbonControlStyle}" AllowKeyTips="True">
+            <dxr:RibbonDefaultPageCategory>
+                <dxr:RibbonPage Caption="Главная">
+                    <dxr:RibbonPageGroup Caption="Работа с документами">
+
+                        <dxb:BarButtonItem Content="Обновить список" 
+                                           IsVisible="{Binding CanViewRegister, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding RefreshCommand}"
+                                           RibbonStyle="Large"
+                                           KeyGesture="F5" Glyph="{dx:DXImage SvgImages/XAF/Action_Refresh.svg}"/>
+
+                        <dxb:BarButtonItem Content="Новый документ"
+                                           IsVisible="{Binding CanCreateDocAmend, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding CreateCommand}"
+                                           RibbonStyle="Large"
+                                           KeyGesture="Ctrl+n" Glyph="{dx:DXImage SvgImages/Outlook Inspired/AddFile.svg}" />
+
+                        <dxb:BarButtonItem Content="Скопировать документ" 
+                                           IsVisible="{Binding CanCreateDocAmend, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding CopyDocCommand}"
+                                           IsEnabled="{Binding IsItemSelected, UpdateSourceTrigger=PropertyChanged}"
+                                           RibbonStyle="Large"
+                                           KeyGesture="Ctrl+n" Glyph="{dx:DXImage SvgImages/Spreadsheet/Copy.svg}" />
+
+                        <dxb:BarButtonItem Content="Изменить выбранный"
+                                           IsEnabled="{Binding IsItemSelected, UpdateSourceTrigger=PropertyChanged}"
+                                           IsVisible="{Binding CanEditDocAmend, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding EditCommand}"
+                                           RibbonStyle="Large"
+                                            Glyph="{dx:DXImage SvgImages/Dashboards/Edit.svg}"/>
+
+                        <dxb:BarButtonItem Content="Удалить выбранный" 
+                                           IsEnabled="{Binding IsItemSelected, UpdateSourceTrigger=PropertyChanged}"
+                                           IsVisible="{Binding CanDeleteDocAmend, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding DeleteCommand}"
+                                           RibbonStyle="Large"
+                                           KeyGesture="F12" Glyph="{dx:DXImage SvgImages/Snap/SnapDeleteList.svg}"/>
+
+                        <dxb:BarButtonItem Content="Проставить &quot;Оригинал&quot;" 
+                                           IsEnabled="{Binding IsItemSelected, UpdateSourceTrigger=PropertyChanged}"
+                                           IsVisible="{Binding CanEditDocAmend, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding SetOriginalCommand}"
+                                           RibbonStyle="Large"
+                                           KeyGesture="F4" Glyph="{dx:DXImage SvgImages/XAF/Action_Grant_Set.svg}"/>
+
+                        <dxb:BarButtonItem Content="Убрать &quot;Оригинал&quot;" 
+                                           IsEnabled="{Binding IsItemSelected, UpdateSourceTrigger=PropertyChanged}"
+                                           IsVisible="{Binding CanEditDocAmend, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding UnsetOriginalCommand}"
+                                           RibbonStyle="Large"
+                                           KeyGesture="F5" Glyph="{dx:DXImage SvgImages/XAF/Action_Deny_Set.svg}"/>
+                        
+                        <!--<dxb:BarButtonItem Content="Тестовая кнопуля" 
+                                           Command="{Binding TestCommand}"
+                                           RibbonStyle="Large"
+                                           Glyph="{dx:DXImage SvgImages/Icon Builder/Security_Bug.svg}"/>-->
+
+                    </dxr:RibbonPageGroup>
+
+                    <dxr:RibbonPageGroup Caption="Статус">
+
+                        <dxb:BarButtonItem Content="Пред." 
+                                           IsEnabled="{Binding CanMoveStatusPrev, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding PrevStatusCommand, UpdateSourceTrigger=PropertyChanged}"
+                                           RibbonStyle="Large" 
+                                           KeyGesture="Return" Glyph="{dx:DXImage SvgImages/Arrows/Prev.svg}" />
+
+                        <dxb:BarButtonItem Content="След." 
+                                           IsEnabled="{Binding CanMoveStatusNext, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding NextStatusCommand, UpdateSourceTrigger=PropertyChanged}"
+                                           RibbonStyle="Large"
+                                           KeyGesture="Return" Glyph="{dx:DXImage SvgImages/Arrows/Next.svg}"/>
+
+                    </dxr:RibbonPageGroup>
+
+                    <dxr:RibbonPageGroup Caption="Фильтры">
+
+                        <dxb:BarEditItem Content="Год" 
+                                         EditValue="{Binding Filter_Year, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                         EditWidth="100" Glyph="{dx:DXImage SvgImages/Spreadsheet/ADateOccuring.svg}">
+                            <dxb:BarEditItem.EditSettings>
+                                <dxe:TextEditSettings Name="Filter_RegToDate" 
+                                                      Mask="d" 
+                                                      MaskUseAsDisplayFormat="True"
+                                                      MaskIgnoreBlank="False"
+                                                      MaskPlaceHolder="_"
+                                                      MaskShowPlaceHolders="True" 
+                                                      MaskType="Numeric" 
+                                                      MaskBeepOnError="True" 
+                                                      MaskCulture="ru-RU">
+                                </dxe:TextEditSettings>
+                            </dxb:BarEditItem.EditSettings>
+                        </dxb:BarEditItem>
+
+                        <dxb:BarEditItem Content="Выбор всего документа" Name="FullDocSelector">
+                            <dxb:BarEditItem.EditSettings>
+                                <dxe:CheckEditSettings/>
+                            </dxb:BarEditItem.EditSettings>
+                        </dxb:BarEditItem>
+
+
+                    </dxr:RibbonPageGroup>
+
+
+                </dxr:RibbonPage>
+
+                <dxr:RibbonPage Caption="Настройки">
+                    <dxr:RibbonPageGroup Caption="Настройки">
+
+                    </dxr:RibbonPageGroup>
+
+                    <dxr:RibbonPageGroup Caption="В будущих релизах">
+
+                        <dxb:BarButtonItem Content="Изменить пароль"
+                                           IsEnabled="False"
+                                           Command="{Binding ChangePasswordCommand}"
+                                           RibbonStyle="Large"
+                                           Glyph="{dx:DXImageOffice2013 Image=HighlightField_32x32.png}"/>
+
+                        <dxb:BarButtonItem Content="Пользователи"  
+                                           IsVisible="{Binding CanViewWebUser, UpdateSourceTrigger=PropertyChanged}"
+                                           IsEnabled="False"
+                                           Command="{Binding OpenUserWindowCommand}"
+                                           RibbonStyle="Large"
+                                           Glyph="{dx:DXImageOffice2013 Image=Team_32x32.png}"/>
+
+                        <dxb:BarButtonItem Content="Роли"  
+                                           IsVisible="{Binding CanViewRole, UpdateSourceTrigger=PropertyChanged}"
+                                           IsEnabled="False"
+                                           Command="{Binding OpenRoleWindowCommand}"
+                                           RibbonStyle="Large"
+                                           Glyph="{dx:DXImageOffice2013 Image=Role_32x32.png}"/>
+
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+
+            </dxr:RibbonDefaultPageCategory>
+        </dxr:RibbonControl>
+        <!--SelectedItems="{Binding SelectedItems}"-->
+        <dxg:GridControl Name="DocumentsDataGrid" ShowBorder="False"
+                          ItemsSource="{Binding ItemsList, UpdateSourceTrigger=PropertyChanged}"    
+                          SelectedItems="{Binding Path=SelectedItems, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                          Grid.Row="1"
+                          SelectionMode="Row"
+                         SelectionChanged="DocumentsDataGrid_SelectionChanged"
+                         
+                          >
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="DocAmend.UserCreator.UserName" Header="Создатель"/>
+                <dxg:GridColumn FieldName="CreatedDate" Header="Создано">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:DateEditSettings Mask="dd MMM yyyy hh:mm:ss" MaskUseAsDisplayFormat="True"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="DocAmend.RegDate" Header="Месяц оформления">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:DateEditSettings Mask="MMM yyyy" MaskUseAsDisplayFormat="True"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Detail.AccrualDate" Header="Месяц начислений">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:DateEditSettings Mask="MMM yyyy" MaskUseAsDisplayFormat="True"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="DocAmend.DocStatus.Name" Header="Статус"/>
+                <dxg:GridColumn FieldName="DocAmend.Company.Name" Header="Компания"/>
+                <dxg:GridColumn FieldName="DocAmend.Provider.Name" Header="Поставщик"/>
+                <dxg:GridColumn FieldName="DocAmend.PayMethod.Name" Header="Способ"/>
+                <dxg:GridColumn FieldName="DocAmend.PayedDate" Header="Оплачено">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:DateEditSettings DisplayFormat="dd MMM yy" ShowNullText="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="DocAmend.HasOriginal" Header="Ориг."/>
+                <dxg:GridColumn FieldName="DocAmend.Comment.Name" Header="Комент. док-та"/>
+                <dxg:GridColumn FieldName="Detail.PlanSum" Header="Сумма">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings DisplayFormat="C2"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Detail.InvoiceNumber" Header="№ с/ф"/>
+                <dxg:GridColumn FieldName="Detail.AccountNumber" Header="Счёт/ДС"/>
+                <dxg:GridColumn FieldName="Detail.DocDate" Header="Дата с/ф">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:DateEditSettings DisplayFormat="dd MMM yy" ShowNullText="False"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn FieldName="Detail.Coment" Header="Комент. статьи"/>
+                <dxg:GridColumn FieldName="Detail.BudgetItem.Name" Header="Статья"/>
+            </dxg:GridControl.Columns>
+
+            <dxg:GridControl.TotalSummary>
+                <dxg:GridSummaryItem FieldName="Detail.PlanSum" 
+                                     SummaryType="Sum" 
+                                     ShowInColumn="Detail.PlanSum"
+                                     DisplayFormat=" {0:C2}" 
+                                     CalculationMode="SelectedRows" />
+            </dxg:GridControl.TotalSummary>
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="view1"
+                               ShowSearchPanelMode="Always"
+                               AllowEditing="False" 
+                               NavigationStyle="Row"
+                               GroupSummaryDisplayMode="AlignByColumns"
+                               dxg:DataViewBase.ShowTotalSummary="True"
+                               SummaryCalculationMode="Mixed"
+                               ShowCheckBoxSelectorColumn="True"
+                               BestFitMode="VisibleRows"
+                               BestFitArea ="All" 
+                               AllowBestFit="True" 
+                               
+                               >
+                    <!--ShowCheckBoxSelectorColumn="True"-->
+                    <dxg:TableView.GroupRowStyle>
+                        <Style TargetType="{x:Type dxg:GroupRowControl}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding GroupLevel}" Value="0">
+                                    <Setter Property="Background" Value="#d9e7ff" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding GroupLevel}" Value="1">
+                                    <Setter Property="Background" Value="#c2d8ff" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding GroupLevel}" Value="2">
+                                    <Setter Property="Background" Value="#abc9ff" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </dxg:TableView.GroupRowStyle>
+
+                    <dxg:TableView.FormatConditions>
+
+                        <!--<dxg:FormatCondition Expression="[Payed] == #01.01.0001#" FieldName="Payed"  >
+                            <dxg:Format FontSize="1"/>
+                        </dxg:FormatCondition>
+
+                        <dxg:FormatCondition Expression="[SfDate] == #01.01.0001#" FieldName="SfDate"  >
+                                <dxg:Format FontSize="1"/>
+                            </dxg:FormatCondition>-->
+
+                        <dxg:FormatCondition ApplyToRow="True" Expression="[StatId] == 1">
+                            <dxg:Format Background="#ddd"/>
+                        </dxg:FormatCondition>
+
+                        <dxg:FormatCondition ApplyToRow="True" Expression="[StatId] == 2">
+                            <dxg:Format Background="#FFFDE3"/>
+                        </dxg:FormatCondition>
+
+                        <dxg:FormatCondition ApplyToRow="True" Expression="[StatId] == 3">
+                            <dxg:Format Background="#fff"/>
+                        </dxg:FormatCondition>
+
+                        <dxg:FormatCondition ApplyToRow="True" Expression="[StatId] == 4">
+                            <dxg:Format Background="#E5F0FF"/>
+                        </dxg:FormatCondition>
+
+                        <dxg:FormatCondition ApplyToRow="True" Expression="[StatId] == 5">
+                            <dxg:Format Background="#E9FFE3"/>
+                        </dxg:FormatCondition>
+
+                    </dxg:TableView.FormatConditions>
+
+
+                </dxg:TableView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+        <dxb:BarContainerControl ContainerType="Bottom" Grid.Row="2">
+            <dxb:StatusBarControl Caption="Status Bar">
+
+                <dxb:BarStaticItem Content="Количество:"/>
+                <dxb:BarEditItem Content="{Binding ItemsCount, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <dxb:BarItemSeparator/>
+
+            </dxb:StatusBarControl>
+        </dxb:BarContainerControl>
+    </Grid>
+</dxr:DXRibbonWindow>

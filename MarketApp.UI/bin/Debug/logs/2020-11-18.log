@@ -1,0 +1,318 @@
+2020-11-18 14:05:07.8936 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: ORA-12514: TNS:listener does not currently know of service requested in connect descriptor ---> OracleInternal.Network.NetworkException: ORA-12514: TNS:listener does not currently know of service requested in connect descriptor
+   в OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   в OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName, ConnectionOption CO)
+   в OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, OracleConnection connRefForCriteria, String instanceName)
+   --- Конец трассировки внутреннего стека исключений ---
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.AsNoTracking()
+   в System.Data.Entity.Infrastructure.DbQuery`1.AsNoTracking()
+   в MarketApp.DataModel.MarketDbContext.Authenticate(String login, String password) в D:\Repos\market_app\MarketApp.DataModel\MarketDbContextExtension.cs:строка 93
+   в MarketApp.UI.ViewModels.AuthViewModel.<>c__DisplayClass18_0.<Authenticate>b__0() в D:\Repos\market_app\MarketApp.UI\ViewModels\AuthViewModel.cs:строка 62
+   в MarketApp.UI.ViewModels.VMBase.ViewModelBase.SafeExecute[TOut](Func`1 ecex, Boolean DisableTokenCheck) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ViewModelBase.cs:строка 52
+2020-11-18 14:11:42.5742 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: ORA-12514: TNS:listener does not currently know of service requested in connect descriptor ---> OracleInternal.Network.NetworkException: ORA-12514: TNS:listener does not currently know of service requested in connect descriptor
+   в OracleInternal.Network.OracleCommunication.DoConnect(String tnsDescriptor)
+   в OracleInternal.Network.OracleCommunication.Connect(String tnsDescriptor, Boolean doNAHandshake, String IName, ConnectionOption CO)
+   в OracleInternal.ServiceObjects.OracleConnectionImpl.Connect(ConnectionString cs, Boolean bOpenEndUserSession, OracleConnection connRefForCriteria, String instanceName)
+   --- Конец трассировки внутреннего стека исключений ---
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.AsNoTracking()
+   в System.Data.Entity.Infrastructure.DbQuery`1.AsNoTracking()
+   в MarketApp.DataModel.MarketDbContext.Authenticate(String login, String password) в D:\Repos\market_app\MarketApp.DataModel\MarketDbContextExtension.cs:строка 93
+   в MarketApp.UI.ViewModels.AuthViewModel.<>c__DisplayClass18_0.<Authenticate>b__0() в D:\Repos\market_app\MarketApp.UI\ViewModels\AuthViewModel.cs:строка 62
+   в MarketApp.UI.ViewModels.VMBase.ViewModelBase.SafeExecute[TOut](Func`1 ecex, Boolean DisableTokenCheck) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ViewModelBase.cs:строка 52
+2020-11-18 14:12:51.2374 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: Connection request timed out
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.AsNoTracking()
+   в System.Data.Entity.Infrastructure.DbQuery`1.AsNoTracking()
+   в MarketApp.DataModel.MarketDbContext.Authenticate(String login, String password) в D:\Repos\market_app\MarketApp.DataModel\MarketDbContextExtension.cs:строка 93
+   в MarketApp.UI.ViewModels.AuthViewModel.<>c__DisplayClass18_0.<Authenticate>b__0() в D:\Repos\market_app\MarketApp.UI\ViewModels\AuthViewModel.cs:строка 62
+   в MarketApp.UI.ViewModels.VMBase.ViewModelBase.SafeExecute[TOut](Func`1 ecex, Boolean DisableTokenCheck) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ViewModelBase.cs:строка 52
+2020-11-18 14:13:31.9346 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: Connection request timed out
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.AsNoTracking()
+   в System.Data.Entity.Infrastructure.DbQuery`1.AsNoTracking()
+   в MarketApp.DataModel.MarketDbContext.Authenticate(String login, String password) в D:\Repos\market_app\MarketApp.DataModel\MarketDbContextExtension.cs:строка 93
+   в MarketApp.UI.ViewModels.AuthViewModel.<>c__DisplayClass18_0.<Authenticate>b__0() в D:\Repos\market_app\MarketApp.UI\ViewModels\AuthViewModel.cs:строка 62
+   в MarketApp.UI.ViewModels.VMBase.ViewModelBase.SafeExecute[TOut](Func`1 ecex, Boolean DisableTokenCheck) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ViewModelBase.cs:строка 52
+2020-11-18 14:18:37.3624 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: Connection request timed out
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.AsNoTracking()
+   в System.Data.Entity.Infrastructure.DbQuery`1.AsNoTracking()
+   в MarketApp.DataModel.MarketDbContext.Authenticate(String login, String password) в D:\Repos\market_app\MarketApp.DataModel\MarketDbContextExtension.cs:строка 93
+   в MarketApp.UI.ViewModels.AuthViewModel.<>c__DisplayClass18_0.<Authenticate>b__0() в D:\Repos\market_app\MarketApp.UI\ViewModels\AuthViewModel.cs:строка 62
+   в MarketApp.UI.ViewModels.VMBase.ViewModelBase.SafeExecute[TOut](Func`1 ecex, Boolean DisableTokenCheck) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ViewModelBase.cs:строка 52
+2020-11-18 14:21:28.7374 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: Connection request timed out
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.AsNoTracking()
+   в System.Data.Entity.Infrastructure.DbQuery`1.AsNoTracking()
+   в MarketApp.DataModel.MarketDbContext.Authenticate(String login, String password) в D:\Repos\market_app\MarketApp.DataModel\MarketDbContextExtension.cs:строка 93
+   в MarketApp.UI.ViewModels.AuthViewModel.<>c__DisplayClass18_0.<Authenticate>b__0() в D:\Repos\market_app\MarketApp.UI\ViewModels\AuthViewModel.cs:строка 62
+   в MarketApp.UI.ViewModels.VMBase.ViewModelBase.SafeExecute[TOut](Func`1 ecex, Boolean DisableTokenCheck) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ViewModelBase.cs:строка 52
+2020-11-18 14:23:04.8155 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: Connection request timed out
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.GetEnumerator()
+   в System.Data.Entity.Infrastructure.DbQuery`1.System.Collections.Generic.IEnumerable<TResult>.GetEnumerator()
+   в System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   в System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   в MarketApp.UI.App..ctor() в D:\Repos\market_app\MarketApp.UI\App.xaml.cs:строка 33
+2020-11-18 14:24:47.8574 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: Connection request timed out
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.GetEnumerator()
+   в System.Data.Entity.Infrastructure.DbQuery`1.System.Collections.Generic.IEnumerable<TResult>.GetEnumerator()
+   в System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   в System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   в MarketApp.UI.App..ctor() в D:\Repos\market_app\MarketApp.UI\App.xaml.cs:строка 33
+2020-11-18 15:14:41.3584 DEBUG App()
+2020-11-18 15:14:41.4453 DEBUG before init oracle
+2020-11-18 15:14:59.2324 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: Connection request timed out
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.GetEnumerator()
+   в System.Data.Entity.Infrastructure.DbQuery`1.System.Collections.Generic.IEnumerable<TResult>.GetEnumerator()
+   в System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   в System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   в MarketApp.UI.App..ctor() в D:\Repos\market_app\MarketApp.UI\App.xaml.cs:строка 36
+2020-11-18 15:15:25.0889 ERROR System.Data.Entity.Core.ProviderIncompatibleException: An error occurred accessing the database. This usually means that the connection to the database failed. Check that the connection string is correct and that the appropriate DbContext constructor is being used to specify it or find it in the application's config file. See http://go.microsoft.com/fwlink/?LinkId=386386 for information on DbContext and connections. See the inner exception for details of the failure. ---> System.Data.Entity.Core.ProviderIncompatibleException: The provider did not return a ProviderManifestToken string. ---> Oracle.ManagedDataAccess.Client.OracleException: Connection request timed out
+   в OracleInternal.ConnectionPool.PoolManager`3.Get(ConnectionString csWithDiffOrNewPwd, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OraclePoolManager.Get(ConnectionString csWithNewPassword, Boolean bGetForApp, OracleConnection connRefForCriteria, String affinityInstanceName, Boolean bForceMatch)
+   в OracleInternal.ConnectionPool.OracleConnectionDispenser`3.Get(ConnectionString cs, PM conPM, ConnectionString pmCS, SecureString securedPassword, SecureString securedProxyPassword, OracleConnection connRefForCriteria)
+   в Oracle.ManagedDataAccess.Client.OracleConnection.Open()
+   в Oracle.ManagedDataAccess.EntityFramework.EFOracleProviderServices.GetDbProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   --- Конец трассировки внутреннего стека исключений ---
+   в System.Data.Entity.Utilities.DbProviderServicesExtensions.GetProviderManifestTokenChecked(DbProviderServices providerServices, DbConnection connection)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.<>c__DisplayClass1_0.<ResolveManifestToken>b__0(Tuple`3 k)
+   в System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   в System.Data.Entity.Infrastructure.DefaultManifestTokenResolver.ResolveManifestToken(DbConnection connection)
+   в System.Data.Entity.Utilities.DbConnectionExtensions.GetProviderInfo(DbConnection connection, DbProviderManifest& providerManifest)
+   в System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   в System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   в System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   в System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   в System.Data.Entity.Internal.InternalContext.Initialize()
+   в System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   в System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   в System.Data.Entity.Internal.Linq.InternalSet`1.AsNoTracking()
+   в System.Data.Entity.Infrastructure.DbQuery`1.AsNoTracking()
+   в MarketApp.DataModel.MarketDbContext.Authenticate(String login, String password) в D:\Repos\market_app\MarketApp.DataModel\MarketDbContextExtension.cs:строка 94
+   в MarketApp.UI.ViewModels.AuthViewModel.<>c__DisplayClass18_0.<Authenticate>b__0() в D:\Repos\market_app\MarketApp.UI\ViewModels\AuthViewModel.cs:строка 62
+   в MarketApp.UI.ViewModels.VMBase.ViewModelBase.SafeExecute[TOut](Func`1 ecex, Boolean DisableTokenCheck) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ViewModelBase.cs:строка 52
+2020-11-18 15:57:54.3701 DEBUG App()
+2020-11-18 15:57:54.4805 DEBUG before init oracle
+2020-11-18 15:58:19.3991 DEBUG В базе отсутствует пользователь с такой парой логин/пароль
+2020-11-18 17:58:41.2725 DEBUG App()
+2020-11-18 17:58:41.4121 DEBUG before init oracle
+2020-11-18 17:58:41.4385 DEBUG GetDefaultConnection()
+2020-11-18 17:59:01.0205 DEBUG В базе отсутствует пользователь с такой парой логин/пароль
+2020-11-18 17:59:29.3379 ERROR System.InvalidOperationException: Последовательность не содержит элементов
+   в System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<>c__14`1.<GetElementFunction>b__14_3(IEnumerable`1 sequence)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   в System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   в System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   в System.Linq.Queryable.Single[TSource](IQueryable`1 source, Expression`1 predicate)
+   в MarketApp.UI.ViewModels.DocAmendViewModel.RefreshAction(String Guid) в D:\Repos\market_app\MarketApp.UI\ViewModels\DocAmendViewModel.cs:строка 53
+   в MarketApp.UI.ViewModels.DocAmendViewModel.Init() в D:\Repos\market_app\MarketApp.UI\ViewModels\DocAmendViewModel.cs:строка 46
+   в MarketApp.UI.ViewModels.DocAmendViewModel..ctor(DocAmend doc) в D:\Repos\market_app\MarketApp.UI\ViewModels\DocAmendViewModel.cs:строка 35
+   в MarketApp.UI.ViewModels.MainViewModel.CreateAction() в D:\Repos\market_app\MarketApp.UI\ViewModels\MainViewModel.cs:строка 172
+   в System.Action.Invoke()
+   в MarketApp.UI.ViewModels.VMBase.ListViewModel`1.SafeInvoke(Action action) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ListViewModel.cs:строка 58
+2020-11-18 18:01:22.6602 DEBUG App()
+2020-11-18 18:01:22.7110 DEBUG before init oracle
+2020-11-18 18:01:22.7510 DEBUG GetDefaultConnection()
+2020-11-18 18:03:50.3047 DEBUG App()
+2020-11-18 18:03:50.3936 DEBUG before init oracle
+2020-11-18 18:03:50.4258 DEBUG GetDefaultConnection()
+2020-11-18 18:09:22.0752 DEBUG GetDefaultConnection()
+2020-11-18 18:10:05.5713 DEBUG GetDefaultConnection()

@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MarketApp.DataModel.Market.Store" Alias="Self" Provider="Devart.Data.Oracle" ProviderManifestToken="Oracle, 11.2.0.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:devart="http://devart.com/schemas/edml/StorageSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MarketEntitiesStoreContainer">
+    <EntitySet Name="DOC_AMENDS" EntityType="MarketApp.DataModel.Market.Store.DOC_AMENDS" store:Type="Tables" Schema="MARKET" Table="DOC_AMENDS" />
+    <EntitySet Name="DOC_AMENDS_DETAILS" EntityType="MarketApp.DataModel.Market.Store.DOC_AMENDS_DETAILS" store:Type="Tables" Schema="MARKET" Table="DOC_AMENDS_DETAILS" />
+    <EntitySet Name="MAP_DOC_TO_DETAILS" EntityType="MarketApp.DataModel.Market.Store.MAP_DOC_TO_DETAILS" store:Type="Tables" Schema="MARKET" Table="MAP_DOC_TO_DETAILS" />
+    <EntitySet Name="MAP_ROLE_TO_PERMs" EntityType="MarketApp.DataModel.Market.Store.MAP_ROLE_TO_PERM" store:Type="Tables" Schema="MARKET" Table="MAP_ROLE_TO_PERM" />
+    <EntitySet Name="REF_ROLES" EntityType="MarketApp.DataModel.Market.Store.REF_ROLES" store:Type="Tables" Schema="MARKET" Table="REF_ROLES" />
+    <EntitySet Name="REF_PERMISSIONS" EntityType="MarketApp.DataModel.Market.Store.REF_PERMISSIONS" store:Type="Tables" Schema="MARKET" Table="REF_PERMISSIONS" />
+    <EntitySet Name="REF_PAY_METHODS" EntityType="MarketApp.DataModel.Market.Store.REF_PAY_METHODS" store:Type="Tables" Schema="MARKET" Table="REF_PAY_METHODS" />
+    <EntitySet Name="REF_DOC_STATUSES" EntityType="MarketApp.DataModel.Market.Store.REF_DOC_STATUSES" store:Type="Tables" Schema="MARKET" Table="REF_DOC_STATUSES" />
+    <EntitySet Name="REF_DOC_COMMENTS" EntityType="MarketApp.DataModel.Market.Store.REF_DOC_COMMENTS" store:Type="Tables" Schema="MARKET" Table="REF_DOC_COMMENTS" />
+    <EntitySet Name="MAP_USER_TO_PERMs" EntityType="MarketApp.DataModel.Market.Store.MAP_USER_TO_PERM" store:Type="Tables" Schema="MARKET" Table="MAP_USER_TO_PERM" />
+    <EntitySet Name="VIEW_REF_BUDGET_ITEMS" EntityType="MarketApp.DataModel.Market.Store.VIEW_REF_BUDGET_ITEMS" store:Type="Views" Schema="MARKET" Table="VIEW_REF_BUDGET_ITEMS" />
+    <EntitySet Name="VIEW_USERS" EntityType="MarketApp.DataModel.Market.Store.VIEW_USERS" store:Type="Views" Schema="MARKET" Table="VIEW_USERS" />
+    <EntitySet Name="VIEW_REF_PROVIDERS" EntityType="MarketApp.DataModel.Market.Store.VIEW_REF_PROVIDERS" store:Type="Views" Schema="MARKET" Table="VIEW_REF_PROVIDERS" />
+    <EntitySet Name="VIEW_REF_COMPANIES" EntityType="MarketApp.DataModel.Market.Store.VIEW_REF_COMPANIES" store:Type="Views" Schema="MARKET" Table="VIEW_REF_COMPANIES" />
+    <AssociationSet Name="FK_DOC_AMENDS_ID_COMMENT" Association="MarketApp.DataModel.Market.Store.FK_DOC_AMENDS_ID_COMMENT">
+      <End Role="REF_DOC_COMMENTS" EntitySet="REF_DOC_COMMENTS" />
+      <End Role="DOC_AMENDS" EntitySet="DOC_AMENDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOC_AMENDS_ID_STATUS" Association="MarketApp.DataModel.Market.Store.FK_DOC_AMENDS_ID_STATUS">
+      <End Role="REF_DOC_STATUSES" EntitySet="REF_DOC_STATUSES" />
+      <End Role="DOC_AMENDS" EntitySet="DOC_AMENDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOC_AMENDS_ID_PAY_METHOD" Association="MarketApp.DataModel.Market.Store.FK_DOC_AMENDS_ID_PAY_METHOD">
+      <End Role="REF_PAY_METHODS" EntitySet="REF_PAY_METHODS" />
+      <End Role="DOC_AMENDS" EntitySet="DOC_AMENDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAP_DOC_TO_DETAILS_ID_DOC" Association="MarketApp.DataModel.Market.Store.FK_MAP_DOC_TO_DETAILS_ID_DOC">
+      <End Role="DOC_AMENDS" EntitySet="DOC_AMENDS" />
+      <End Role="MAP_DOC_TO_DETAILS" EntitySet="MAP_DOC_TO_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOC_AMENDS_RELATIONS_ID_DET" Association="MarketApp.DataModel.Market.Store.FK_DOC_AMENDS_RELATIONS_ID_DET">
+      <End Role="DOC_AMENDS_DETAILS" EntitySet="DOC_AMENDS_DETAILS" />
+      <End Role="MAP_DOC_TO_DETAILS" EntitySet="MAP_DOC_TO_DETAILS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAP_ROLE_TO_PERM_ID_ROLE" Association="MarketApp.DataModel.Market.Store.FK_MAP_ROLE_TO_PERM_ID_ROLE">
+      <End Role="REF_ROLES" EntitySet="REF_ROLES" />
+      <End Role="MAP_ROLE_TO_PERM" EntitySet="MAP_ROLE_TO_PERMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAP_ROLE_TO_PERM_ID_PERMISS" Association="MarketApp.DataModel.Market.Store.FK_MAP_ROLE_TO_PERM_ID_PERMISS">
+      <End Role="REF_PERMISSIONS" EntitySet="REF_PERMISSIONS" />
+      <End Role="MAP_ROLE_TO_PERM" EntitySet="MAP_ROLE_TO_PERMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAP_USER_TO_PERM_ID_PERMISS" Association="MarketApp.DataModel.Market.Store.FK_MAP_USER_TO_PERM_ID_PERMISS">
+      <End Role="REF_PERMISSIONS" EntitySet="REF_PERMISSIONS" />
+      <End Role="MAP_USER_TO_PERM" EntitySet="MAP_USER_TO_PERMs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DOC_AMENDS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" devart:DefaultValue="SYSDATE" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="REG_DATE" Type="DATE" Nullable="false" />
+    <Property Name="ACCRUAL_DATE" Type="DATE" Nullable="false" />
+    <Property Name="ID_COMMENT" Type="VARCHAR2" MaxLength="38" />
+    <Property Name="ID_STATUS" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="ID_COMPANY" Type="decimal" Nullable="false" />
+    <Property Name="ID_PROVIDER" Type="decimal" Nullable="false" />
+    <Property Name="ID_PAY_METHOD" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="PAYED_DATE" Type="DATE" />
+    <Property Name="HAS_ORIGINAL" Type="bool" Nullable="false" DefaultValue="False" />
+  </EntityType>
+  <EntityType Name="DOC_AMENDS_DETAILS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" devart:DefaultValue="SYSDATE" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="INVOICE_NUMBER" Type="VARCHAR2" MaxLength="38" />
+    <Property Name="PLAN_SUM" Type="decimal" />
+    <Property Name="INVOICE_FILE" Type="BLOB" />
+    <Property Name="COMENT" Type="NVARCHAR2" MaxLength="64" />
+    <Property Name="DOC_DATE" Type="DATE" />
+    <Property Name="ID_BUDGET" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MAP_DOC_TO_DETAILS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" Nullable="false" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="ID_DETAIL" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="ID_DOC" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+  </EntityType>
+  <EntityType Name="MAP_ROLE_TO_PERM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" Nullable="false" devart:DefaultValue="SYSDATE" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="ID_ROLE" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="ID_PERMISSION" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+  </EntityType>
+  <EntityType Name="REF_ROLES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" Nullable="false" devart:DefaultValue="SYSDATE" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="NAME" Type="VARCHAR2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="REF_PERMISSIONS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" Nullable="false" devart:DefaultValue="SYSDATE" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="NAME" Type="NVARCHAR2" MaxLength="64" />
+    <Property Name="PERM_NAME" Type="NVARCHAR2" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="REF_PAY_METHODS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" Nullable="false" devart:DefaultValue="SYSDATE" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="NAME" Type="VARCHAR2" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="REF_DOC_STATUSES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" Nullable="false" devart:DefaultValue="SYSDATE" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="NAME" Type="VARCHAR2" Nullable="false" MaxLength="64" />
+    <Property Name="ORDER" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REF_DOC_COMMENTS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" Nullable="false" devart:DefaultValue="SYSDATE" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="NAME" Type="VARCHAR2" Nullable="false" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="MAP_USER_TO_PERM">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="VARCHAR2" Nullable="false" MaxLength="38" />
+    <Property Name="CREATED_DATE" Type="DATE" Nullable="false" devart:DefaultValue="SYSDATE" />
+    <Property Name="DELETED_DATE" Type="DATE" />
+    <Property Name="ID_USER" Type="decimal" Nullable="false" />
+    <Property Name="ID_PERMISSION" Type="VARCHAR2" MaxLength="38" />
+  </EntityType>
+  <EntityType Name="VIEW_REF_BUDGET_ITEMS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Nullable="false" Scale="0" />
+    <Property Name="NAME" Type="VARCHAR2" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="VIEW_USERS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Nullable="false" />
+    <Property Name="USER_NAME" Type="VARCHAR2" MaxLength="255" />
+    <Property Name="PASSWORD" Type="VARCHAR2" MaxLength="255" />
+    <Property Name="FIO" Type="VARCHAR2" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="VIEW_REF_PROVIDERS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Nullable="false" />
+    <Property Name="NAME" Type="VARCHAR2" MaxLength="133" />
+    <Property Name="ADDRESS" Type="VARCHAR2" MaxLength="128" />
+    <Property Name="KPP" Type="decimal" Scale="0" />
+  </EntityType>
+  <EntityType Name="VIEW_REF_COMPANIES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="decimal" Nullable="false" />
+    <Property Name="NAME" Type="VARCHAR2" MaxLength="133" />
+    <Property Name="ADDRESS" Type="VARCHAR2" MaxLength="128" />
+    <Property Name="KPP" Type="decimal" Scale="0" />
+  </EntityType>
+  <Association Name="FK_DOC_AMENDS_ID_COMMENT">
+    <End Role="REF_DOC_COMMENTS" Type="MarketApp.DataModel.Market.Store.REF_DOC_COMMENTS" Multiplicity="0..1" />
+    <End Role="DOC_AMENDS" Type="MarketApp.DataModel.Market.Store.DOC_AMENDS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REF_DOC_COMMENTS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DOC_AMENDS">
+        <PropertyRef Name="ID_COMMENT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOC_AMENDS_ID_STATUS">
+    <End Role="REF_DOC_STATUSES" Type="MarketApp.DataModel.Market.Store.REF_DOC_STATUSES" Multiplicity="1" />
+    <End Role="DOC_AMENDS" Type="MarketApp.DataModel.Market.Store.DOC_AMENDS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REF_DOC_STATUSES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DOC_AMENDS">
+        <PropertyRef Name="ID_STATUS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOC_AMENDS_ID_PAY_METHOD">
+    <End Role="REF_PAY_METHODS" Type="MarketApp.DataModel.Market.Store.REF_PAY_METHODS" Multiplicity="1" />
+    <End Role="DOC_AMENDS" Type="MarketApp.DataModel.Market.Store.DOC_AMENDS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REF_PAY_METHODS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DOC_AMENDS">
+        <PropertyRef Name="ID_PAY_METHOD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAP_DOC_TO_DETAILS_ID_DOC">
+    <End Role="DOC_AMENDS" Type="MarketApp.DataModel.Market.Store.DOC_AMENDS" Multiplicity="1" />
+    <End Role="MAP_DOC_TO_DETAILS" Type="MarketApp.DataModel.Market.Store.MAP_DOC_TO_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOC_AMENDS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MAP_DOC_TO_DETAILS">
+        <PropertyRef Name="ID_DOC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOC_AMENDS_RELATIONS_ID_DET">
+    <End Role="DOC_AMENDS_DETAILS" Type="MarketApp.DataModel.Market.Store.DOC_AMENDS_DETAILS" Multiplicity="1" />
+    <End Role="MAP_DOC_TO_DETAILS" Type="MarketApp.DataModel.Market.Store.MAP_DOC_TO_DETAILS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOC_AMENDS_DETAILS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MAP_DOC_TO_DETAILS">
+        <PropertyRef Name="ID_DETAIL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAP_ROLE_TO_PERM_ID_ROLE">
+    <End Role="REF_ROLES" Type="MarketApp.DataModel.Market.Store.REF_ROLES" Multiplicity="1" />
+    <End Role="MAP_ROLE_TO_PERM" Type="MarketApp.DataModel.Market.Store.MAP_ROLE_TO_PERM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REF_ROLES">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MAP_ROLE_TO_PERM">
+        <PropertyRef Name="ID_ROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAP_ROLE_TO_PERM_ID_PERMISS">
+    <End Role="REF_PERMISSIONS" Type="MarketApp.DataModel.Market.Store.REF_PERMISSIONS" Multiplicity="1" />
+    <End Role="MAP_ROLE_TO_PERM" Type="MarketApp.DataModel.Market.Store.MAP_ROLE_TO_PERM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REF_PERMISSIONS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MAP_ROLE_TO_PERM">
+        <PropertyRef Name="ID_PERMISSION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAP_USER_TO_PERM_ID_PERMISS">
+    <End Role="REF_PERMISSIONS" Type="MarketApp.DataModel.Market.Store.REF_PERMISSIONS" Multiplicity="0..1" />
+    <End Role="MAP_USER_TO_PERM" Type="MarketApp.DataModel.Market.Store.MAP_USER_TO_PERM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REF_PERMISSIONS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="MAP_USER_TO_PERM">
+        <PropertyRef Name="ID_PERMISSION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

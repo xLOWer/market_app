@@ -1,0 +1,10 @@
+2020-11-24 11:16:44.8386 DEBUG GetDefaultConnection()
+2020-11-24 11:17:20.6033 ERROR System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в MarketApp.UI.ViewModels.MainViewModel.CreateAction() в D:\Repos\market_app\MarketApp.UI\ViewModels\MainViewModel.cs:строка 182
+   в System.Action.Invoke()
+   в MarketApp.UI.ViewModels.VMBase.ListViewModel`1.SafeInvoke(Action action) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ListViewModel.cs:строка 51
+2020-11-24 11:17:47.9812 ERROR System.NullReferenceException: Ссылка на объект не указывает на экземпляр объекта.
+   в MarketApp.UI.ViewModels.MainViewModel.CreateAction() в D:\Repos\market_app\MarketApp.UI\ViewModels\MainViewModel.cs:строка 182
+   в System.Action.Invoke()
+   в MarketApp.UI.ViewModels.VMBase.ListViewModel`1.SafeInvoke(Action action) в D:\Repos\market_app\MarketApp.UI\ViewModels\VMBase\ListViewModel.cs:строка 51
+2020-11-24 11:26:45.6286 DEBUG GetDefaultConnection()

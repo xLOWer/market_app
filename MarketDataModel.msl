@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MarketEntitiesStoreContainer" CdmEntityContainer="MarketDbContext">
+    <EntitySetMapping Name="DocAmends">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.DocAmend">
+        <MappingFragment StoreEntitySet="DOC_AMENDS">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="RegDate" ColumnName="REG_DATE" />
+          <ScalarProperty Name="AccrualDate" ColumnName="ACCRUAL_DATE" />
+          <ScalarProperty Name="IdComment" ColumnName="ID_COMMENT" />
+          <ScalarProperty Name="IdStatus" ColumnName="ID_STATUS" />
+          <ScalarProperty Name="IdCompany" ColumnName="ID_COMPANY" />
+          <ScalarProperty Name="IdProvider" ColumnName="ID_PROVIDER" />
+          <ScalarProperty Name="IdPayMethod" ColumnName="ID_PAY_METHOD" />
+          <ScalarProperty Name="PayedDate" ColumnName="PAYED_DATE" />
+          <ScalarProperty Name="HasOriginal" ColumnName="HAS_ORIGINAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Details">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.Detail">
+        <MappingFragment StoreEntitySet="DOC_AMENDS_DETAILS">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="InvoiceNumber" ColumnName="INVOICE_NUMBER" />
+          <ScalarProperty Name="PlanSum" ColumnName="PLAN_SUM" />
+          <ScalarProperty Name="InvoiceFile" ColumnName="INVOICE_FILE" />
+          <ScalarProperty Name="Coment" ColumnName="COMENT" />
+          <ScalarProperty Name="DocDate" ColumnName="DOC_DATE" />
+          <ScalarProperty Name="IdBudget" ColumnName="ID_BUDGET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocsToDetails">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.DocsToDetails">
+        <MappingFragment StoreEntitySet="MAP_DOC_TO_DETAILS">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="IdDetail" ColumnName="ID_DETAIL" />
+          <ScalarProperty Name="IdDoc" ColumnName="ID_DOC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RolesToPermissions">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.RolesToPermissions">
+        <MappingFragment StoreEntitySet="MAP_ROLE_TO_PERMs">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="IdRole" ColumnName="ID_ROLE" />
+          <ScalarProperty Name="IdPermission" ColumnName="ID_PERMISSION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.Role">
+        <MappingFragment StoreEntitySet="REF_ROLES">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.Permission">
+        <MappingFragment StoreEntitySet="REF_PERMISSIONS">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="PermName" ColumnName="PERM_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PayMethods">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.PayMethod">
+        <MappingFragment StoreEntitySet="REF_PAY_METHODS">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statuses">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.Status">
+        <MappingFragment StoreEntitySet="REF_DOC_STATUSES">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="Order" ColumnName="ORDER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.Comment">
+        <MappingFragment StoreEntitySet="REF_DOC_COMMENTS">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersToPermissons">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.UsersToPermissons">
+        <MappingFragment StoreEntitySet="MAP_USER_TO_PERMs">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="DeletedDate" ColumnName="DELETED_DATE" />
+          <ScalarProperty Name="IdUser" ColumnName="ID_USER" />
+          <ScalarProperty Name="IdPermission" ColumnName="ID_PERMISSION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BudgetItems">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.BudgetItem">
+        <MappingFragment StoreEntitySet="VIEW_REF_BUDGET_ITEMS">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.User">
+        <MappingFragment StoreEntitySet="VIEW_USERS">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="USER_NAME" />
+          <ScalarProperty Name="Password" ColumnName="PASSWORD" />
+          <ScalarProperty Name="Fio" ColumnName="FIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Providers">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.Provider">
+        <MappingFragment StoreEntitySet="VIEW_REF_PROVIDERS">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="Address" ColumnName="ADDRESS" />
+          <ScalarProperty Name="Kpp" ColumnName="KPP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="MarketApp.DataModel.Market.Company">
+        <MappingFragment StoreEntitySet="VIEW_REF_COMPANIES">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="NAME" />
+          <ScalarProperty Name="Address" ColumnName="ADDRESS" />
+          <ScalarProperty Name="Kpp" ColumnName="KPP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

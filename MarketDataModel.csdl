@@ -1,0 +1,378 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MarketApp.DataModel.Market" Alias="Self" d1p1:ViewGeneration="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:devart="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" annotation:UseStrongSpatialTypes="false" xmlns:d1p1="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MarketDbContext" annotation:LazyLoadingEnabled="true" ed:Guid="642b9da3-0fb1-41b1-b03b-6ca47144f59b">
+    <EntitySet Name="DocAmends" EntityType="MarketApp.DataModel.Market.DocAmend" />
+    <EntitySet Name="Details" EntityType="MarketApp.DataModel.Market.Detail" />
+    <EntitySet Name="DocsToDetails" EntityType="MarketApp.DataModel.Market.DocsToDetails" />
+    <EntitySet Name="RolesToPermissions" EntityType="MarketApp.DataModel.Market.RolesToPermissions" />
+    <EntitySet Name="Roles" EntityType="MarketApp.DataModel.Market.Role" />
+    <EntitySet Name="Permissions" EntityType="MarketApp.DataModel.Market.Permission" />
+    <EntitySet Name="PayMethods" EntityType="MarketApp.DataModel.Market.PayMethod" />
+    <EntitySet Name="Statuses" EntityType="MarketApp.DataModel.Market.Status" />
+    <EntitySet Name="Comments" EntityType="MarketApp.DataModel.Market.Comment" />
+    <EntitySet Name="UsersToPermissons" EntityType="MarketApp.DataModel.Market.UsersToPermissons" />
+    <EntitySet Name="BudgetItems" EntityType="MarketApp.DataModel.Market.BudgetItem" />
+    <EntitySet Name="Users" EntityType="MarketApp.DataModel.Market.User" />
+    <EntitySet Name="Providers" EntityType="MarketApp.DataModel.Market.Provider" />
+    <EntitySet Name="Companies" EntityType="MarketApp.DataModel.Market.Company" />
+    <AssociationSet Name="FK_DOC_AMENDS_ID_COMMENTSet" Association="MarketApp.DataModel.Market.FK_DOC_AMENDS_ID_COMMENT">
+      <End Role="Comment" EntitySet="Comments" />
+      <End Role="DocAmends" EntitySet="DocAmends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOC_AMENDS_ID_STATUSSet" Association="MarketApp.DataModel.Market.FK_DOC_AMENDS_ID_STATUS">
+      <End Role="DocStatus" EntitySet="Statuses" />
+      <End Role="DocAmends" EntitySet="DocAmends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOC_AMENDS_ID_PAY_METHODSet" Association="MarketApp.DataModel.Market.FK_DOC_AMENDS_ID_PAY_METHOD">
+      <End Role="PayMethod" EntitySet="PayMethods" />
+      <End Role="DocAmends" EntitySet="DocAmends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAP_DOC_TO_DETAILS_ID_DOCSet" Association="MarketApp.DataModel.Market.FK_MAP_DOC_TO_DETAILS_ID_DOC">
+      <End Role="DocAmend" EntitySet="DocAmends" />
+      <End Role="DocToDetails" EntitySet="DocsToDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOC_AMENDS_RELATIONS_ID_DETSet" Association="MarketApp.DataModel.Market.FK_DOC_AMENDS_RELATIONS_ID_DET">
+      <End Role="DocAmendsDetail" EntitySet="Details" />
+      <End Role="DocToDetails" EntitySet="DocsToDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAP_ROLE_TO_PERM_ID_ROLESet" Association="MarketApp.DataModel.Market.FK_MAP_ROLE_TO_PERM_ID_ROLE">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RoleToPerms" EntitySet="RolesToPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAP_ROLE_TO_PERM_ID_PERMISSSet" Association="MarketApp.DataModel.Market.FK_MAP_ROLE_TO_PERM_ID_PERMISS">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="RoleToPerms" EntitySet="RolesToPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAP_USER_TO_PERM_ID_PERMISSSet" Association="MarketApp.DataModel.Market.FK_MAP_USER_TO_PERM_ID_PERMISS">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="UserToPerms" EntitySet="UsersToPermissons" />
+    </AssociationSet>
+    <AssociationSet Name="ViewUsers_UserToPermSet" Association="MarketApp.DataModel.Market.ViewUsers_UserToPerm">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserToPerms" EntitySet="UsersToPermissons" />
+    </AssociationSet>
+    <AssociationSet Name="ViewRefCompanies_DocAmendsSet" Association="MarketApp.DataModel.Market.ViewRefCompanies_DocAmends">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="DocAmends" EntitySet="DocAmends" />
+    </AssociationSet>
+    <AssociationSet Name="ViewRefProviders_DocAmendsSet" Association="MarketApp.DataModel.Market.ViewRefProviders_DocAmends">
+      <End Role="Provider" EntitySet="Providers" />
+      <End Role="DocAmends" EntitySet="DocAmends" />
+    </AssociationSet>
+    <AssociationSet Name="ViewRefBudgetItems_DocAmendsDetailsSet" Association="MarketApp.DataModel.Market.ViewRefBudgetItems_DocAmendsDetails">
+      <End Role="BudgetItem" EntitySet="BudgetItems" />
+      <End Role="DocAmendsDetails" EntitySet="Details" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DocAmend" ed:Guid="47269436-4d37-4c38-bea4-db6666b03e7d">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="6baa1fe1-7525-41e3-811a-1348ced84d42" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="08da40c2-17fb-40eb-9b3f-4ffbd340d019" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="1c62230c-bc52-4a04-b036-975398ccd6f7" />
+    <Property Name="RegDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="424908c6-9c30-4cf5-8653-650cf26c262b" />
+    <Property Name="AccrualDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="6a70cf03-222a-4b19-aedc-14e7fddfc2fb" />
+    <Property Name="IdComment" Type="String" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="false" ed:Guid="6ecef53f-66d7-40e3-b2bd-07a19f9afc44" />
+    <Property Name="IdStatus" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="0bff5bad-5b6c-4804-bfce-ae5dacd60e87" />
+    <Property Name="IdCompany" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="aaa89289-6bc2-489f-b760-4d28d1ede3c7" />
+    <Property Name="IdProvider" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="d52f0bd9-b25e-4f46-bfab-04edf6a7dc0e" />
+    <Property Name="IdPayMethod" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="bbf83560-5812-44e2-a698-79a5e9722e4b" />
+    <Property Name="PayedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="ba2116dc-4f44-43c3-9649-403bced58a9c" />
+    <Property Name="HasOriginal" Type="Boolean" Nullable="false" DefaultValue="False" ed:ValidateRequired="true" ed:Guid="f7a34673-0119-4cb8-b99d-03b71b730a81" />
+    <NavigationProperty Name="Comment" Relationship="MarketApp.DataModel.Market.FK_DOC_AMENDS_ID_COMMENT" FromRole="DocAmends" ToRole="Comment" ed:Guid="befddfe1-c168-46a1-b116-e5f93413550b" />
+    <NavigationProperty Name="DocStatus" Relationship="MarketApp.DataModel.Market.FK_DOC_AMENDS_ID_STATUS" FromRole="DocAmends" ToRole="DocStatus" ed:Guid="d041ac87-5b73-47ef-9b26-0cf22c16f466" />
+    <NavigationProperty Name="PayMethod" Relationship="MarketApp.DataModel.Market.FK_DOC_AMENDS_ID_PAY_METHOD" FromRole="DocAmends" ToRole="PayMethod" ed:Guid="53142fcc-53f5-4a72-99a6-1ee6f3cda8ad" />
+    <NavigationProperty Name="DocToDetails" Relationship="MarketApp.DataModel.Market.FK_MAP_DOC_TO_DETAILS_ID_DOC" FromRole="DocAmend" ToRole="DocToDetails" ed:Guid="ec16dc44-e84e-4001-bb5c-18bda03f660c" />
+    <NavigationProperty Name="Company" Relationship="MarketApp.DataModel.Market.ViewRefCompanies_DocAmends" FromRole="DocAmends" ToRole="Company" ed:Guid="484f3943-7194-474c-884d-a26d6fb334fd" />
+    <NavigationProperty Name="Provider" Relationship="MarketApp.DataModel.Market.ViewRefProviders_DocAmends" FromRole="DocAmends" ToRole="Provider" ed:Guid="2b060d4d-6525-4b1a-8e1e-30fcf302a552" />
+  </EntityType>
+  <EntityType Name="Detail" ed:Guid="73f2667e-22b8-4aa8-b371-39f38493d09d">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="550cd8da-e2b0-470f-81dd-16b806768f35" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="ef7abc4c-2f99-4163-b2c7-8b40843b9d26" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="05b7a0bb-b9ce-4313-ab4c-b5b3be797d14" />
+    <Property Name="InvoiceNumber" Type="String" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="false" ed:Guid="e1e351a9-d2e4-4188-a989-8ae132e5e032" />
+    <Property Name="PlanSum" Type="Decimal" ed:ValidateRequired="false" ed:Guid="b3cb67a3-fd8c-4da1-960f-64162500db73" />
+    <Property Name="InvoiceFile" Type="Binary" ed:ValidateRequired="false" ed:Guid="140d9b61-ba7b-4ba5-b1f0-b721dac94a44" />
+    <Property Name="Coment" Type="String" MaxLength="64" Unicode="true" ed:ValidateMaxLength="64" ed:ValidateRequired="false" ed:Guid="3b2637fb-b94d-4f37-b17d-238d5be7d5cb" />
+    <Property Name="DocDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="a52cd985-4099-488f-9781-84a75a0a1fd5" />
+    <Property Name="IdBudget" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="a04a4b6f-8f46-4e4e-aa5c-003278c13ec1" />
+    <NavigationProperty Name="DocToDetails" Relationship="MarketApp.DataModel.Market.FK_DOC_AMENDS_RELATIONS_ID_DET" FromRole="DocAmendsDetail" ToRole="DocToDetails" ed:Guid="22032157-9914-44ab-b31e-f45e2706d3c9" />
+    <NavigationProperty Name="BudgetItem" Relationship="MarketApp.DataModel.Market.ViewRefBudgetItems_DocAmendsDetails" FromRole="DocAmendsDetails" ToRole="BudgetItem" ed:Guid="a5fae6c3-4148-4153-af98-1f19b12f15da" />
+  </EntityType>
+  <EntityType Name="DocsToDetails" ed:Guid="c54d347a-ad3a-4eaf-9611-d21fb685fd94">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="727719d4-eb02-409d-b23a-8738101cf244" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="cd815b13-96c3-4e3a-9784-a83780509199" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="fab51eda-0d72-4cb8-8832-76abca21fdbc" />
+    <Property Name="IdDetail" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="6fff54d1-0536-4615-8377-f7abebba3284" />
+    <Property Name="IdDoc" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="0af5dd0d-58d2-4aeb-ae9d-660cf35cc1f6" />
+    <NavigationProperty Name="DocAmend" Relationship="MarketApp.DataModel.Market.FK_MAP_DOC_TO_DETAILS_ID_DOC" FromRole="DocToDetails" ToRole="DocAmend" ed:Guid="4c59a373-cc86-4f81-9c4f-0786b164eea1" />
+    <NavigationProperty Name="DocAmendsDetail" Relationship="MarketApp.DataModel.Market.FK_DOC_AMENDS_RELATIONS_ID_DET" FromRole="DocToDetails" ToRole="DocAmendsDetail" ed:Guid="523a2d19-0372-442e-adff-5aa67be632a6" />
+  </EntityType>
+  <EntityType Name="RolesToPermissions" ed:Guid="f016e024-18c4-4bc4-b680-3001832d5ba5">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="037ae315-0470-4646-9838-377108cdb91e" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="8c0dfc0e-d805-4966-91b2-74be43e16fe6" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="61804aad-ca4a-4dc1-8eb5-68a261467e53" />
+    <Property Name="IdRole" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="4dcab3b1-0256-41cd-8016-a8da4842a636" />
+    <Property Name="IdPermission" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="24f980fd-4508-435d-8225-bb4fc30570e7" />
+    <NavigationProperty Name="Role" Relationship="MarketApp.DataModel.Market.FK_MAP_ROLE_TO_PERM_ID_ROLE" FromRole="RoleToPerms" ToRole="Role" ed:Guid="c4de20c9-7b93-45af-9ed6-418081d23c01" />
+    <NavigationProperty Name="Permission" Relationship="MarketApp.DataModel.Market.FK_MAP_ROLE_TO_PERM_ID_PERMISS" FromRole="RoleToPerms" ToRole="Permission" ed:Guid="bc28a924-6213-4745-b219-82eaadfef6fe" />
+  </EntityType>
+  <EntityType Name="Role" ed:Guid="fea2e327-b4c7-4e0b-926d-44133419e8d6">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="a6ebe0a5-51a8-40f0-91a3-c6d8674d0612" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="45dcd803-4d5d-4dd4-92e8-4e63747f678e" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="a8c273a4-0c85-47b0-9feb-7bbe076f53c9" />
+    <Property Name="Name" Type="String" MaxLength="50" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="8436d0d6-fecd-4c6c-9e5e-efbfc127d122" />
+    <NavigationProperty Name="RoleToPerms" Relationship="MarketApp.DataModel.Market.FK_MAP_ROLE_TO_PERM_ID_ROLE" FromRole="Role" ToRole="RoleToPerms" ed:Guid="62237f61-155c-46fa-a5ca-6e342cf96bd5" />
+  </EntityType>
+  <EntityType Name="Permission" ed:Guid="08f5d639-0d3a-4f5f-9f66-2ee615ce6022">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="e78d358e-24a6-4f6a-ba44-8e5a66bfa731" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="2465d78c-d8d0-43e3-9072-40710d58f1ab" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="96fb1cc9-fa66-4920-befb-e18de3a59c51" />
+    <Property Name="Name" Type="String" MaxLength="64" Unicode="true" ed:ValidateMaxLength="64" ed:ValidateRequired="false" ed:Guid="a515ed05-28f7-4968-a271-bef342e60b84" />
+    <Property Name="PermName" Type="String" MaxLength="64" Unicode="true" ed:ValidateMaxLength="64" ed:ValidateRequired="false" ed:Guid="49d950ae-8dd6-4ca5-9c3a-123580536d72" />
+    <NavigationProperty Name="RoleToPerms" Relationship="MarketApp.DataModel.Market.FK_MAP_ROLE_TO_PERM_ID_PERMISS" FromRole="Permission" ToRole="RoleToPerms" ed:Guid="4ea3110b-8dbd-4807-b18f-2357e92f3f5f" />
+    <NavigationProperty Name="UserToPerms" Relationship="MarketApp.DataModel.Market.FK_MAP_USER_TO_PERM_ID_PERMISS" FromRole="Permission" ToRole="UserToPerms" ed:Guid="343f896d-e9ec-46f2-b237-d4049e652899" />
+  </EntityType>
+  <EntityType Name="PayMethod" ed:Guid="95d9a438-1284-4cc1-a958-9435bd9f945b">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="02c415f3-7b3d-40a8-adb0-6a3eb6857da3" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="cb3cb88e-d0fa-42d8-8b91-95f84184e578" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="cadb0e7f-c281-4d84-aaee-97ee7130c898" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" ed:ValidateMaxLength="64" ed:ValidateRequired="true" ed:Guid="e8fa4524-305d-4707-afe9-e5a90f006c46" />
+    <NavigationProperty Name="DocAmends" Relationship="MarketApp.DataModel.Market.FK_DOC_AMENDS_ID_PAY_METHOD" FromRole="PayMethod" ToRole="DocAmends" ed:Guid="08d61ec0-cdde-4824-8107-f78cdf3a7784" />
+  </EntityType>
+  <EntityType Name="Status" ed:Guid="97ddadd0-54e0-4568-87ca-b91c5a140319">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="3b1c6872-41d2-473e-b96c-c65dd3367fd9" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="239206b7-f2f8-4d4e-9d65-0c3d96721599" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="a511c7a9-6681-42b0-a3b5-d60839cac843" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" ed:ValidateMaxLength="64" ed:ValidateRequired="true" ed:Guid="d86bf3bc-5520-4fec-99b3-2de5c43005e4" />
+    <Property Name="Order" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="09d4579c-c2c1-4c9e-849f-31efe0400a9c" />
+    <NavigationProperty Name="DocAmends" Relationship="MarketApp.DataModel.Market.FK_DOC_AMENDS_ID_STATUS" FromRole="DocStatus" ToRole="DocAmends" ed:Guid="5cc6a883-5286-4611-b77d-c37f5596b46e" />
+  </EntityType>
+  <EntityType Name="Comment" ed:Guid="9badf27d-f208-452e-89b3-409dac64883a">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="e49f6388-21da-4f01-8817-8181384ad700" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="745677ae-25d6-43f6-8b27-8a2a67e78914" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="90db7f5e-3e37-4884-be26-aa63ef70700b" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" ed:ValidateMaxLength="64" ed:ValidateRequired="true" ed:Guid="ce1d1f91-d44e-431e-90b0-504f5c9fc5c9" />
+    <NavigationProperty Name="DocAmends" Relationship="MarketApp.DataModel.Market.FK_DOC_AMENDS_ID_COMMENT" FromRole="Comment" ToRole="DocAmends" ed:Guid="31fb5f4a-85b3-4411-835b-8981c670e664" />
+  </EntityType>
+  <EntityType Name="UsersToPermissons" ed:Guid="ee196f36-a0d7-44ec-9fbc-9df52e970870">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="true" ed:Guid="454d8ca5-149d-41e8-bf86-64f65e0dfa96" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" ed:ValidateRequired="true" ed:Guid="3bec7e49-743f-4221-a2d1-4e50e7421f68" />
+    <Property Name="DeletedDate" Type="DateTime" Precision="0" ed:ValidateRequired="false" ed:Guid="f6fe5647-6e16-4fb3-bac7-4c15e06cd931" />
+    <Property Name="IdUser" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="f8fa4196-80c7-4cd5-a6af-0a8062aa8245" />
+    <Property Name="IdPermission" Type="String" MaxLength="38" ed:ValidateMaxLength="38" ed:ValidateRequired="false" ed:Guid="a622d3c3-8704-4e19-bb48-ecc267deb20c" />
+    <Property Name="ViewUsersId" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="216d3da6-8221-4640-a1a3-bc2789f54335" />
+    <NavigationProperty Name="Permission" Relationship="MarketApp.DataModel.Market.FK_MAP_USER_TO_PERM_ID_PERMISS" FromRole="UserToPerms" ToRole="Permission" ed:Guid="d671f91b-2910-4baf-8e8b-9b0f1f7a5e2e" />
+    <NavigationProperty Name="User" Relationship="MarketApp.DataModel.Market.ViewUsers_UserToPerm" FromRole="UserToPerms" ToRole="User" ed:Guid="d6c857ba-f015-46fb-83ea-4a0493988659" />
+  </EntityType>
+  <EntityType Name="BudgetItem" ed:Guid="15e2ae44-aa32-4bc0-88d6-a045173142e4">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Decimal" Nullable="false" Scale="0" ed:ValidateRequired="true" ed:Guid="f492380b-6925-414e-8a36-d81ce28c4e6f" />
+    <Property Name="Name" Type="String" MaxLength="255" ed:ValidateMaxLength="255" ed:ValidateRequired="false" ed:Guid="cee1cf7c-ec12-43f2-a938-1dca6343ba24" />
+    <NavigationProperty Name="DocAmendsDetails" Relationship="MarketApp.DataModel.Market.ViewRefBudgetItems_DocAmendsDetails" FromRole="BudgetItem" ToRole="DocAmendsDetails" ed:Guid="332a02de-d5cc-4e5b-9efb-074e00d3b3da" />
+  </EntityType>
+  <EntityType Name="User" ed:Guid="aae5837d-11ed-4cb6-adfc-c1fd92e8ee79">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="c6315486-f71e-451a-823b-fc8636b7621d" />
+    <Property Name="UserName" Type="String" MaxLength="255" ed:ValidateMaxLength="255" ed:ValidateRequired="false" ed:Guid="54fcaf40-a9db-47ab-aeca-cef2d0d10919" />
+    <Property Name="Password" Type="String" MaxLength="255" ed:ValidateMaxLength="255" ed:ValidateRequired="false" ed:Guid="036e18ee-ac6d-43ce-bd15-9ec1a268b203" />
+    <Property Name="Fio" Type="String" MaxLength="255" ed:ValidateMaxLength="255" ed:ValidateRequired="false" ed:Guid="d8bd76b1-e3b1-45fb-a983-a52e7fbe482b" />
+    <NavigationProperty Name="UserToPerms" Relationship="MarketApp.DataModel.Market.ViewUsers_UserToPerm" FromRole="User" ToRole="UserToPerms" ed:Guid="cdeea994-8db2-41df-965b-46294bfd5729" />
+  </EntityType>
+  <EntityType Name="Provider" ed:Guid="926b80a2-9f07-4812-b01d-3d87797faced">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="133fc610-80cb-4f44-99f5-ccfec945a725" />
+    <Property Name="Name" Type="String" MaxLength="133" ed:ValidateMaxLength="133" ed:ValidateRequired="false" ed:Guid="599de6cf-ec14-4c74-839a-4f3ff61729d0" />
+    <Property Name="Address" Type="String" MaxLength="128" ed:ValidateMaxLength="128" ed:ValidateRequired="false" ed:Guid="e547bd1b-d075-4506-9eb8-a002253e28cc" />
+    <Property Name="Kpp" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="366c66e6-c73c-4ef2-8428-4c2ad0c682a5" />
+    <NavigationProperty Name="DocAmends" Relationship="MarketApp.DataModel.Market.ViewRefProviders_DocAmends" FromRole="Provider" ToRole="DocAmends" ed:Guid="1f432c45-e531-4361-b10a-ac57ee92c4e8" />
+  </EntityType>
+  <EntityType Name="Company" ed:Guid="16e6034f-e04c-4fc5-b202-5324e57264f7">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="3e6ed587-d632-4043-9a26-13d7db3358cc" />
+    <Property Name="Name" Type="String" MaxLength="133" ed:ValidateMaxLength="133" ed:ValidateRequired="false" ed:Guid="d3969c71-d5d0-4750-b4f4-43fd91667581" />
+    <Property Name="Address" Type="String" MaxLength="128" ed:ValidateMaxLength="128" ed:ValidateRequired="false" ed:Guid="73c0634e-07cb-457e-9f2d-73a5ae55c1cb" />
+    <Property Name="Kpp" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="16442512-d5b8-4506-8f76-b1adc8613b95" />
+    <NavigationProperty Name="DocAmends" Relationship="MarketApp.DataModel.Market.ViewRefCompanies_DocAmends" FromRole="Company" ToRole="DocAmends" ed:Guid="dc1ff6b3-6592-42c6-a2f9-37ccef047bd1" />
+  </EntityType>
+  <Association Name="FK_DOC_AMENDS_ID_COMMENT" ed:Guid="a1a35e96-d287-4449-827d-4196fca8f1a8">
+    <End Role="Comment" Type="MarketApp.DataModel.Market.Comment" Multiplicity="0..1" />
+    <End Role="DocAmends" Type="MarketApp.DataModel.Market.DocAmend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocAmends">
+        <PropertyRef Name="IdComment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOC_AMENDS_ID_STATUS" ed:Guid="d892b0ee-6bdb-4d95-b278-3fca133cd154">
+    <End Role="DocStatus" Type="MarketApp.DataModel.Market.Status" Multiplicity="1" />
+    <End Role="DocAmends" Type="MarketApp.DataModel.Market.DocAmend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocStatus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocAmends">
+        <PropertyRef Name="IdStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOC_AMENDS_ID_PAY_METHOD" ed:Guid="c5576e02-30db-49de-9209-a804191b371d">
+    <End Role="PayMethod" Type="MarketApp.DataModel.Market.PayMethod" Multiplicity="1" />
+    <End Role="DocAmends" Type="MarketApp.DataModel.Market.DocAmend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PayMethod">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocAmends">
+        <PropertyRef Name="IdPayMethod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAP_DOC_TO_DETAILS_ID_DOC" ed:Guid="6ce3e326-b520-4aff-8586-7bcd47cde72c">
+    <End Role="DocAmend" Type="MarketApp.DataModel.Market.DocAmend" Multiplicity="1" />
+    <End Role="DocToDetails" Type="MarketApp.DataModel.Market.DocsToDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocAmend">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocToDetails">
+        <PropertyRef Name="IdDoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOC_AMENDS_RELATIONS_ID_DET" ed:Guid="3f92b814-9a52-4442-84c4-aaa01c39e0a1">
+    <End Role="DocAmendsDetail" Type="MarketApp.DataModel.Market.Detail" Multiplicity="1" />
+    <End Role="DocToDetails" Type="MarketApp.DataModel.Market.DocsToDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocAmendsDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocToDetails">
+        <PropertyRef Name="IdDetail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAP_ROLE_TO_PERM_ID_ROLE" ed:Guid="bdaa33d1-fba5-4c81-bcf6-de8ce9ec13b9">
+    <End Role="Role" Type="MarketApp.DataModel.Market.Role" Multiplicity="1" />
+    <End Role="RoleToPerms" Type="MarketApp.DataModel.Market.RolesToPermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleToPerms">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAP_ROLE_TO_PERM_ID_PERMISS" ed:Guid="aaac61f3-eef4-4b3d-ac1a-c988de78caac">
+    <End Role="Permission" Type="MarketApp.DataModel.Market.Permission" Multiplicity="1" />
+    <End Role="RoleToPerms" Type="MarketApp.DataModel.Market.RolesToPermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoleToPerms">
+        <PropertyRef Name="IdPermission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAP_USER_TO_PERM_ID_PERMISS" ed:Guid="385a441a-d779-4c6d-9926-7da46b474563">
+    <End Role="Permission" Type="MarketApp.DataModel.Market.Permission" Multiplicity="1" />
+    <End Role="UserToPerms" Type="MarketApp.DataModel.Market.UsersToPermissons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserToPerms">
+        <PropertyRef Name="IdPermission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ViewUsers_UserToPerm" ed:Guid="1d897f9a-bb0e-4f99-8316-9d7c549832a7">
+    <End Role="User" Type="MarketApp.DataModel.Market.User" Multiplicity="1" />
+    <End Role="UserToPerms" Type="MarketApp.DataModel.Market.UsersToPermissons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserToPerms">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ViewRefCompanies_DocAmends" ed:Guid="88ead1e1-82a7-4e60-a7db-6b9776660230">
+    <End Role="Company" Type="MarketApp.DataModel.Market.Company" Multiplicity="0..1" />
+    <End Role="DocAmends" Type="MarketApp.DataModel.Market.DocAmend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocAmends">
+        <PropertyRef Name="IdCompany" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ViewRefProviders_DocAmends" ed:Guid="1871e685-9073-4deb-93ce-55ca67f0b884">
+    <End Role="Provider" Type="MarketApp.DataModel.Market.Provider" Multiplicity="1" />
+    <End Role="DocAmends" Type="MarketApp.DataModel.Market.DocAmend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Provider">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocAmends">
+        <PropertyRef Name="IdProvider" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ViewRefBudgetItems_DocAmendsDetails" ed:Guid="d76f8b81-a787-443c-a80f-d1b38a8348e9">
+    <End Role="BudgetItem" Type="MarketApp.DataModel.Market.BudgetItem" Multiplicity="1" />
+    <End Role="DocAmendsDetails" Type="MarketApp.DataModel.Market.Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BudgetItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocAmendsDetails">
+        <PropertyRef Name="IdBudget" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

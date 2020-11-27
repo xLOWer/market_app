@@ -1,0 +1,86 @@
+﻿<dxr:DXRibbonWindow x:Class="MarketApp.UI.Views.UserListWindow"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+                    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+                    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+                    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    mc:Ignorable="d" Title="Пользователи" Height="650" Width="900">
+    <dx:DXWindow.Resources>
+        <ResourceDictionary Source="../Styles.xaml"/>
+    </dx:DXWindow.Resources>
+    <Grid Margin="0 0 0 -2" x:Name="userGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <dxr:RibbonControl Grid.Row="0" Style="{StaticResource ribbonControlStyle}">
+            <dxr:RibbonDefaultPageCategory>
+                <dxr:RibbonPage Caption="Пользователи">
+                    <dxr:RibbonPageGroup Caption="Действия">
+
+                        <dxb:BarButtonItem Content="Обновить"
+                                           IsVisible="{Binding CanViewWebUser, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding RefreshCommand}"
+                                           RibbonStyle="Large"
+                                           Glyph="{dx:DXImageOffice2013 Image=Refresh_32x32.png}"/>
+
+                        <dxb:BarButtonItem Content="Новый"
+                                           IsVisible="{Binding CanCreateWebUser, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding CreateCommand}"
+                                           RibbonStyle="Large"
+                                           Glyph="{dx:DXImageOffice2013 Image=Add_32x32.png}"/>
+
+                        <dxb:BarButtonItem Content="Открыть"
+                                           IsEnabled="{Binding ItemSelected, UpdateSourceTrigger=PropertyChanged}"
+                                           IsVisible="{Binding CanEditWebUser, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding EditCommand}"
+                                           RibbonStyle="Large"
+                                           Glyph="{dx:DXImageOffice2013 Image=Open_32x32.png}"
+                                           KeyGesture="Enter"/>
+
+                        <dxb:BarButtonItem Content="Удалить"
+                                           IsEnabled="{Binding ItemSelected, UpdateSourceTrigger=PropertyChanged}"
+                                           IsVisible="{Binding CanDeleteWebUser, UpdateSourceTrigger=PropertyChanged}"
+                                           Command="{Binding DeleteCommand}"
+                                           RibbonStyle="Large"
+                                           Glyph="{dx:DXImageOffice2013 Image=Delete_32x32.png}"/>
+
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+            </dxr:RibbonDefaultPageCategory>
+        </dxr:RibbonControl>
+
+        <Grid   Height="Auto" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <dxg:GridControl Grid.Row="1" 
+                             x:Name="usersDataGrid" 
+                             ShowBorder="False"
+                             ItemsSource="{Binding Path=ViewSource, UpdateSourceTrigger=PropertyChanged}"
+                             SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     
+                             >
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn Header="Логин" FieldName="Login"  Width="*"/>
+                    <dxg:GridColumn Header="ФИО" FieldName="Name" Width="*"/>
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="usersView" 
+                                   ShowGroupPanel="False" 
+                                   ShowSearchPanelMode="Always"
+                                   AllowEditing="False" 
+                                   NavigationStyle="Cell"
+                                   GroupSummaryDisplayMode="AlignByColumns"
+                                   dxg:DataViewBase.ShowTotalSummary="True"
+                                   AllowBestFit="True"/>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+    </Grid>
+</dxr:DXRibbonWindow>

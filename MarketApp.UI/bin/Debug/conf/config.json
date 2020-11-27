@@ -1,0 +1,16 @@
+{
+	"DebugModeEnabled":true,
+	"TestModeEnabled":true,
+	"MaxOpenedWindowsCount":8,
+	"TokenExpirationHours":2,
+	"MarketConnectionString":"User Id=MARKET;Password=vfhrtnbyu;Data Source=192.168.2.18/orcl.findb",
+	"ProxyEnabled":false,
+	"ProxyAddress":"1",
+	"ProxyUserName":"1",
+	"ProxyUserPassword":"1",
+	"MailSmtpServerAddress":"1",
+	"MailUserLogin":"1",
+	"MailUserPassword":"1",
+	"MailUserEmailAddress":"1",
+	"MailErrorSubject":"1"
+}
